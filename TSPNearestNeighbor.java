@@ -1,16 +1,13 @@
 //This version messes with randomizing the start & taking minimum of a few runs
-
+import java.io.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Stack;
 import java.util.Queue;
 import java.util.Deque;
 import java.util.ArrayDeque;
-import java.io.*;
 import java.util.Scanner;
 import java.util.Random;
-// import java.io.File;
-// import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
@@ -112,7 +109,7 @@ public class TSPNearestNeighbor
         while (!stack.isEmpty())
         {
             element = stack.peek();
-            i = 0; //iterator count (need to look at 0 again? I think it just skips first while loop)
+            i = 0; //column iterator count
             min = Integer.MAX_VALUE;
             while (i < numberOfNodes)
             {
@@ -132,8 +129,7 @@ public class TSPNearestNeighbor
                 visited[dst] = 1;
                 stack.push(dst);
                 temp.addLast(dst);
-                last = dst; //save last index so you can link to 0/beginning again
-                /////////////////////////////////////System.out.print(dst + "\t");
+                last = dst; //save last index so you can link to beginning again
                 cost += min;
                 minFlag = false;
                 continue;
@@ -175,6 +171,7 @@ public class TSPNearestNeighbor
 
     public static void main(String[] args) throws FileNotFoundException
     {
+        startTime = System.currentTimeMillis();
         String fileName = args[0];
         PrintStream out = new PrintStream(new File(fileName + ".tour"));
         System.setOut(out);
@@ -229,21 +226,10 @@ public class TSPNearestNeighbor
         {
             System.out.println("Wrong Input format");
         }
-
+        endTime = System.currentTimeMillis();
+        elapsedTime = endTime - startTime;
+        // System.out.println("Time in sec: " + elapsedTime/100);
+        // System.out.println("Time in min: " + elapsedTime/100/60);
     }
-    // public static void test(){
-    // // for(int i = 3; i > 0; i--){
-    // // System.out.printf("Test %d, file 1\n", i);
-    // String[] testing = {"tsp_example_3.txt"};
-    // // main(testing);
 
-    // // testing[0] = "tsp_example_2.txt";
-    // // System.out.printf("Test %d, file 2\n", i);
-    // // main(testing);
-
-    // //testing[0] = "tsp_example_3.txt";
-    // System.out.printf("Test 1, file 3\n");
-    // main(testing);
-    // //}
-    // }
 }
