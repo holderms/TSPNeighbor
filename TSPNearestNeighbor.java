@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Stack;
 import java.util.Queue;
-import java.util.Deque;
+//import java.util.Deque;
 import java.util.ArrayDeque;
 import java.util.Scanner;
 import java.util.Random;
@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.TimeUnit;
 public class TSPNearestNeighbor
 {
     private int numberOfNodes;
@@ -28,6 +28,7 @@ public class TSPNearestNeighbor
     private static long endTime;
     private static long elapsedTime;
     private static int size;
+    private static int loops = 99;
 
     /* ----------------------------- CITY CLASS ------------------------------ */
     public static class City
@@ -178,7 +179,7 @@ public class TSPNearestNeighbor
         int number_of_nodes;
 
         Random generator = new Random(startTime);
-        int loops = 5;
+        //loops = 99;
         ArrayList<ArrayDeque> save = new ArrayList<ArrayDeque>();
         try
         {
@@ -228,8 +229,8 @@ public class TSPNearestNeighbor
         }
         endTime = System.currentTimeMillis();
         elapsedTime = endTime - startTime;
-        // System.out.println("Time in sec: " + elapsedTime/100);
-        // System.out.println("Time in min: " + elapsedTime/100/60);
+        System.out.println("Time in sec: " + elapsedTime/100);
+        System.out.println("Time in min: " + elapsedTime/100/60);
     }
 
 }
